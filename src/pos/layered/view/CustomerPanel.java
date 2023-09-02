@@ -4,16 +4,25 @@
  */
 package pos.layered.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import pos.layered.controller.CustomerController;
+import pos.layered.dto.CustomerDto;
+
 /**
  *
  * @author BHANUKA
  */
 public class CustomerPanel extends javax.swing.JPanel {
+    
+    private CustomerController customerController;
 
     /**
      * Creates new form CustomerPanel
      */
     public CustomerPanel() {
+        customerController = new CustomerController();
         initComponents();
     }
 
@@ -335,7 +344,7 @@ public class CustomerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_custPostalCodeTextFieldActionPerformed
 
     private void saveCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCustomerButtonActionPerformed
-        // TODO add your handling code here:
+        saveCustomer();
     }//GEN-LAST:event_saveCustomerButtonActionPerformed
 
     private void updateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCustomerButtonActionPerformed
@@ -376,4 +385,38 @@ public class CustomerPanel extends javax.swing.JPanel {
     private javax.swing.JPanel tablePanel;
     private javax.swing.JButton updateCustomerButton;
     // End of variables declaration//GEN-END:variables
+
+    public void saveCustomer() {
+        try {
+            CustomerDto customerDto = new CustomerDto(
+                custIDTextField.getText(), 
+                custTitleTextField.getText(), 
+                custNameTextField.getText(), 
+                custAddressTextField.getText(), 
+                custDOBTextField.getText(), 
+                Double.valueOf(custSalaryTextField.getText()), 
+                custCityTextField.getText(), 
+                custProvinceTextField.getText(), 
+                custPostalCodeTextField.getText());
+        
+            String response = customerController.saveCustomer(customerDto);
+            JOptionPane.showMessageDialog(this, response);
+            clear();
+        } catch {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+    
+    private void clear() {
+        custIDTextField.setText("");
+        custTitleTextField.setText("");
+        custNameTextField.setText("");
+        custDOBTextField.setText("");
+        custAddressTextField.setText("");
+        custSalaryTextField.setText("");
+        custCityTextField.setText(""); 
+        custProvinceTextField.setText("");
+        custPostalCodeTextField.setText("");
+    }
 }
