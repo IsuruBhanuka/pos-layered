@@ -402,10 +402,9 @@ public class CustomerPanel extends javax.swing.JPanel {
             String response = customerController.saveCustomer(customerDto);
             JOptionPane.showMessageDialog(this, response);
             clear();
-        } catch {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }
     
     private void clear() {

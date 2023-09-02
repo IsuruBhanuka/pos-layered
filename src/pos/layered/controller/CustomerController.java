@@ -15,7 +15,7 @@ public class CustomerController {
     
     CustomerService customerService = null;
     
-    public String saveCustomer(CustomerDto customerDto) { 
+    public String saveCustomer(CustomerDto customerDto) throws Exception { 
         return customerService.saveCustomer(customerDto);
     }
 }
