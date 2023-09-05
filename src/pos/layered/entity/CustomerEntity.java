@@ -159,6 +159,9 @@ public class CustomerEntity {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "CustomerEntity{" + "custID=" + custID + ", custTitle=" + custTitle + ", custName=" + custName + ", custAddress=" + custAddress + ", dob=" + dob + ", salary=" + salary + ", city=" + city + ", province=" + province + ", postalCode=" + postalCode + '}';
+    }
 }
