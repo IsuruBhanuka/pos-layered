@@ -5,7 +5,6 @@
 package pos.layered.dao.customer;
 
 import pos.layered.dao.CrudDao;
-import pos.layered.dao.SuperDao;
 import pos.layered.entity.CustomerEntity;
 
 /**

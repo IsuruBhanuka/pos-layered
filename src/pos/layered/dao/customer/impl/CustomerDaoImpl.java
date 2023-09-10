@@ -41,19 +41,19 @@ public class CustomerDaoImpl implements CustomerDao {
     public CustomerEntity get(String id) throws Exception {
         ResultSet rst = CrudUtil.executeQuery("SELECT * FROM customer WHERE CustID = ?", id);
         return new CustomerEntity( rst.getString(1), rst.getString(2), rst.getString(3), 
-                    rst.getString(4), rst.getString(5), rst.getDouble(6), 
+                    rst.getString(6), rst.getString(4), rst.getDouble(5), 
                     rst.getString(7), rst.getString(8), rst.getString(9));
     }
 
     @Override
     public ArrayList<CustomerEntity> getAll() throws Exception {
         ArrayList<CustomerEntity> customers = new ArrayList<>();
-        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM customer", "");
+        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM customer");
         
         while (rst.next()) {
             CustomerEntity customerEntity = new CustomerEntity(
                     rst.getString(1), rst.getString(2), rst.getString(3), 
-                    rst.getString(4), rst.getString(5), rst.getDouble(6), 
+                    rst.getString(6), rst.getString(4), rst.getDouble(5), 
                     rst.getString(7), rst.getString(8), rst.getString(9));
             customers.add(customerEntity);
         }

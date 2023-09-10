@@ -57,7 +57,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public ArrayList<CustomerDto> getAllCustomer(String custID) throws Exception {
+    public ArrayList<CustomerDto> getAllCustomer() throws Exception {
         ArrayList<CustomerEntity> customerEntityList = customerDao.getAll();
         ArrayList<CustomerDto> customerDtoList = new ArrayList<>();
         for(CustomerEntity customerEntity: customerEntityList) {

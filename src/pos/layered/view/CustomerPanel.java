@@ -4,11 +4,15 @@
  */
 package pos.layered.view;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import pos.layered.controller.CustomerController;
 import pos.layered.dto.CustomerDto;
+import pos.layered.service.customer.impl.CustomerServiceImpl;
 
 /**
  *
@@ -24,6 +28,7 @@ public class CustomerPanel extends javax.swing.JPanel {
     public CustomerPanel() {
         customerController = new CustomerController();
         initComponents();
+        displayAllCustomers();
     }
 
     /**
@@ -455,5 +460,30 @@ public class CustomerPanel extends javax.swing.JPanel {
         custCityTextField.setText(""); 
         custProvinceTextField.setText("");
         custPostalCodeTextField.setText("");
+    }
+    
+    private void displayAllCustomers() {
+        String[] columns = {"ID", "Name", "DOB", "Salary", "Address", "City", "Province"};
+        DefaultTableModel dtm = new DefaultTableModel(columns,0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }       
+        };
+        
+        try {
+            custTable.setModel(dtm);
+        
+            ArrayList<CustomerDto> customers;
+            customers = customerController.displayAllCustomers();
+            
+            for(CustomerDto customer : customers) {
+                Object[] rowData = {customer.getId(), customer.getTitle() + " " + customer.getName(), customer.getAdress(), customer.getDob(), customer.getSalary(), customer.getCity(), customer.getProvince()};
+                dtm.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerPanel.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }    
     }
 }
