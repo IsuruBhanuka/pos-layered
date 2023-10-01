@@ -40,6 +40,7 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public CustomerEntity get(String id) throws Exception {
         ResultSet rst = CrudUtil.executeQuery("SELECT * FROM customer WHERE CustID = ?", id);
+        rst.next();
         return new CustomerEntity( rst.getString(1), rst.getString(2), rst.getString(3), 
                     rst.getString(6), rst.getString(4), rst.getDouble(5), 
                     rst.getString(7), rst.getString(8), rst.getString(9));

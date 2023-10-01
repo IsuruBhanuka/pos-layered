@@ -15,7 +15,7 @@ import pos.layered.service.customer.CustomerService;
  */
 public class CustomerController {
     
-    CustomerService customerService = (CustomerService) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.CUSTOMER);
+    private CustomerService customerService = (CustomerService) ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.CUSTOMER);
     
     public String saveCustomer(CustomerDto customerDto) throws Exception { 
         return customerService.saveCustomer(customerDto);
@@ -23,6 +23,18 @@ public class CustomerController {
     
     public ArrayList<CustomerDto> displayAllCustomers() throws Exception {
         return customerService.getAllCustomer();
+    }
+    
+    public CustomerDto getCustomer(String ID) throws Exception {
+        return customerService.searchCustomer(ID);
+    }
+    
+    public String updateCustomer(CustomerDto customerDto) throws Exception {
+        return customerService.updateCustomer(customerDto);
+    }
+    
+    public String deleteCustomer(String ID) throws Exception {
+        return customerService.deleteCustomer(ID);
     }
 }
  
