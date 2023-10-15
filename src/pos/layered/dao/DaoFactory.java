@@ -4,7 +4,8 @@
  */
 package pos.layered.dao;
 
-import pos.layered.dao.customer.impl.CustomerDaoImpl;
+import pos.layered.dao.custom.impl.CustomerDaoImpl;
+import pos.layered.dao.custom.impl.ItemDaoImpl;
 
 /**
  *
@@ -28,12 +29,14 @@ public class DaoFactory {
         switch (type) {
             case CUSTOMER:
                 return new CustomerDaoImpl();
+            case ITEM:
+                return new ItemDaoImpl();
             default:
                 return null;
         }   
     }            
     
     public enum DaoTypes {
-        CUSTOMER,
+        CUSTOMER, ITEM
     }
 }

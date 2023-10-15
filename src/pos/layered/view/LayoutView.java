@@ -31,6 +31,7 @@ public class LayoutView extends javax.swing.JFrame {
         headerLabel = new javax.swing.JLabel();
         sideNaviPanel = new javax.swing.JPanel();
         manageCustButton = new javax.swing.JButton();
+        manageItemButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,13 +66,25 @@ public class LayoutView extends javax.swing.JFrame {
             }
         });
 
+        manageItemButton.setBackground(new java.awt.Color(204, 255, 255));
+        manageItemButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        manageItemButton.setText("Manage Item");
+        manageItemButton.setActionCommand("Customer");
+        manageItemButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageItemButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout sideNaviPanelLayout = new javax.swing.GroupLayout(sideNaviPanel);
         sideNaviPanel.setLayout(sideNaviPanelLayout);
         sideNaviPanelLayout.setHorizontalGroup(
             sideNaviPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sideNaviPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(manageCustButton, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addGroup(sideNaviPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(manageCustButton, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(manageItemButton, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
                 .addContainerGap())
         );
         sideNaviPanelLayout.setVerticalGroup(
@@ -79,7 +92,9 @@ public class LayoutView extends javax.swing.JFrame {
             .addGroup(sideNaviPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(manageCustButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(436, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(manageItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(395, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
@@ -131,6 +146,10 @@ public class LayoutView extends javax.swing.JFrame {
         loadCustomerPanel();
     }//GEN-LAST:event_manageCustButtonActionPerformed
 
+    private void manageItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageItemButtonActionPerformed
+        loadItemPanel();
+    }//GEN-LAST:event_manageItemButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -172,6 +191,7 @@ public class LayoutView extends javax.swing.JFrame {
     private javax.swing.JLabel headerLabel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JButton manageCustButton;
+    private javax.swing.JButton manageItemButton;
     private javax.swing.JPanel sideNaviPanel;
     // End of variables declaration//GEN-END:variables
     
@@ -180,6 +200,15 @@ public class LayoutView extends javax.swing.JFrame {
         CustomerPanel customerPanel = new CustomerPanel();
         customerPanel.setSize(bodyPanel.getWidth(), bodyPanel.getHeight());
         bodyPanel.add(customerPanel); 
+        bodyPanel.repaint();
+        bodyPanel.revalidate();
+    }
+    
+    public void loadItemPanel() {
+        bodyPanel.removeAll();
+        ItemPanel itemPanel = new ItemPanel();
+        itemPanel.setSize(bodyPanel.getWidth(), bodyPanel.getHeight());
+        bodyPanel.add(itemPanel); 
         bodyPanel.repaint();
         bodyPanel.revalidate();
     }

@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package pos.layered.dao.customer.impl;
+package pos.layered.dao.custom.impl;
 
 import java.util.ArrayList;
 import pos.layered.dao.CrudUtil;
-import pos.layered.dao.customer.CustomerDao;
+import pos.layered.dao.custom.CustomerDao;
 import pos.layered.entity.CustomerEntity;
 import java.sql.ResultSet;
 
