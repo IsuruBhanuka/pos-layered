@@ -312,7 +312,7 @@ public class CustomerPanel extends javax.swing.JPanel {
         );
 
         headerLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        headerLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        headerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         headerLabel.setText("Manage Customer");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -505,7 +505,6 @@ public class CustomerPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Customer Not Found");
             }      
         } catch (Exception ex) {
-            //ex.printStackTrace();
             Logger.getLogger(CustomerPanel.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }

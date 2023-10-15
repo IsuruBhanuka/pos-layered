@@ -7,7 +7,7 @@ package pos.layered.controller;
 import java.util.ArrayList;
 import pos.layered.dto.CustomerDto;
 import pos.layered.service.ServiceFactory;
-import pos.layered.service.customer.CustomerService;
+import pos.layered.service.custom.CustomerService;
 
 /**
  *
