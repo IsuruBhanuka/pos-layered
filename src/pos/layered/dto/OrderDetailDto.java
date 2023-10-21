@@ -10,7 +10,6 @@ package pos.layered.dto;
  */
 public class OrderDetailDto {
     
-    private String orderID;
     private String itemCode;
     private Integer orderQty;
     private Double discount;
@@ -18,25 +17,10 @@ public class OrderDetailDto {
     public OrderDetailDto() {
     }
 
-    public OrderDetailDto(String orderID, String itemCode, Integer orderQty, Double discount) {
-        this.orderID = orderID;
+    public OrderDetailDto(String itemCode, Integer orderQty, Double discount) {
         this.itemCode = itemCode;
         this.orderQty = orderQty;
         this.discount = discount;
-    }
-
-    /**
-     * @return the orderID
-     */
-    public String getOrderID() {
-        return orderID;
-    }
-
-    /**
-     * @param orderID the orderID to set
-     */
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
     }
 
     /**
@@ -80,7 +64,9 @@ public class OrderDetailDto {
     public void setDiscount(Double discount) {
         this.discount = discount;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "OrderDetailDto{" + ", itemCode=" + itemCode + ", orderQty=" + orderQty + ", discount=" + discount + '}';
+    }
 }

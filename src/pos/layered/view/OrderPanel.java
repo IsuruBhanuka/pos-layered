@@ -5,6 +5,7 @@
 package pos.layered.view;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,6 +24,8 @@ public class OrderPanel extends javax.swing.JPanel {
     
     private CustomerController customerController;
     private ItemController itemController;
+    
+    private ArrayList<OrderDetailDto> odDto = new ArrayList<>();
 
     /**
      * Creates new form OrderPanel
@@ -302,7 +305,7 @@ public class OrderPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_itemTableMouseClicked
 
     private void placeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderButtonActionPerformed
-        placeOrder();
+        // placeOrder();
     }//GEN-LAST:event_placeOrderButtonActionPerformed
 
     private void custIDTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custIDTextActionPerformed
@@ -394,10 +397,10 @@ public class OrderPanel extends javax.swing.JPanel {
     }
     
     public void addToTable() {
-        OrderDetailDto od = new OrderDetailDto("", itemCodeText.getText(), Integer.valueOf(qtyText.getText()), Double.valueOf(discountText.getText()));
-        od.add(od);
+        OrderDetailDto od = new OrderDetailDto(itemCodeText.getText(), Integer.valueOf(qtyText.getText()), Double.valueOf(discountText.getText()));
+        odDto.add(od);
          
-        Object[] rowData = {odm.getItemCode(), odm.getOrderQty(), odm.getDiscount()};
+        Object[] rowData = {od.getItemCode(), od.getOrderQty(), od.getDiscount()};
          
         DefaultTableModel dtm = (DefaultTableModel) itemTable.getModel();
         dtm.addRow(rowData);
